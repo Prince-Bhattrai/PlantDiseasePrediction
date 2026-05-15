@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+body{
+  font-family: "Poppins", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+:root {
+  --surface: #f8f9fa;
+  --surface-dim: #d9dadb;
+  --surface-bright: #f8f9fa;
+
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f3f4f5;
+  --surface-container: #edeeef;
+  --surface-container-high: #e7e8e9;
+  --surface-container-highest: #e1e3e4;
+
+  --on-surface: #191c1d;
+  --on-surface-variant: #414844;
+
+  --inverse-surface: #2e3132;
+  --inverse-on-surface: #f0f1f2;
+
+  --outline: #717973;
+  --outline-variant: #c1c8c2;
+
+  --surface-tint: #3f6653;
+
+  --primary: #012d1d;
+  --on-primary: #ffffff;
+
+  --primary-container: #1b4332;
+  --on-primary-container: #86af99;
+
+  --inverse-primary: #a5d0b9;
+
+  --secondary: #006c48;
+  --on-secondary: #ffffff;
+
+  --secondary-container: #92f7c3;
+  --on-secondary-container: #00734d;
+
+  --tertiary: #152b1c;
+  --on-tertiary: #ffffff;
+
+  --tertiary-container: #2a4131;
+  --on-tertiary-container: #93ad98;
+
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+
+  --error-container: #ffdad6;
+  --on-error-container: #93000a;
+
+  --primary-fixed: #c1ecd4;
+  --primary-fixed-dim: #a5d0b9;
+
+  --on-primary-fixed: #002114;
+  --on-primary-fixed-variant: #274e3d;
+
+  --secondary-fixed: #92f7c3;
+  --secondary-fixed-dim: #75daa8;
+
+  --on-secondary-fixed: #002113;
+  --on-secondary-fixed-variant: #005235;
+
+  --tertiary-fixed: #cee9d3;
+  --tertiary-fixed-dim: #b3cdb7;
+
+  --on-tertiary-fixed: #092012;
+  --on-tertiary-fixed-variant: #354c3b;
+
+  --background: #f8f9fa;
+  --on-background: #191c1d;
+
+  --surface-variant: #e1e3e4;
+
+
+  --font-display: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --display-lg-size: 48px;
+  --display-lg-weight: 700;
+  --display-lg-line: 56px;
+
+  --headline-lg-size: 32px;
+  --headline-lg-weight: 600;
+  --headline-lg-line: 40px;
+
+  --headline-md-size: 24px;
+  --headline-md-weight: 600;
+  --headline-md-line: 32px;
+
+  --body-lg-size: 18px;
+  --body-lg-weight: 400;
+  --body-lg-line: 28px;
+
+  --body-md-size: 16px;
+  --body-md-weight: 400;
+  --body-md-line: 24px;
+
+  --label-sm-size: 14px;
+  --label-sm-weight: 500;
+  --label-sm-line: 20px;
+
+
+  --radius-sm: 0.25rem;
+  --radius-default: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+
+  --container-max: 1280px;
+
+  --gutter: 24px;
+
+  --margin-desktop: 48px;
+  --margin-tablet: 32px;
+  --margin-mobile: 16px;
+
+  --stack-sm: 8px;
+  --stack-md: 16px;
+  --stack-lg: 32px;
+
+
+  --shadow:0px 4px 20px rgba(27, 67, 50, 0.06);
+}
+
+::selection{
+  background-color: #92F7C3;
+  color:#00724C ;
+}
+
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("../../assets/images/loginBackground.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 60, 40, 0.35)
+        );
+
+    z-index: -1;
+    backdrop-filter: blur(10px);
+}

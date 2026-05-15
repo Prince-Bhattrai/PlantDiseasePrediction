@@ -1,0 +1,241 @@
+.home {
+    position: relative;
+    overflow: hidden;
+    padding: 50px;
+
+}
+
+.home::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../../assets/images/loginBackground.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    z-index: -2;
+}
+
+.home::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 60, 40, 0.35)
+        );
+
+    z-index: -1;
+    backdrop-filter: blur(10px);
+}
+
+.home .information::before {
+    content: "";
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 255, 157, 0.08),
+            transparent 70%
+        );
+
+    top: -180px;
+    right: -150px;
+
+    z-index: -1;
+}
+
+
+.home .information {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    margin-top: 120px;
+    gap: 35px;
+
+    z-index: 2;
+    gap: 20px;
+}
+
+
+.home .information .con {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+
+.home .information .text {
+    min-width: 240px;
+
+    padding: 40px 35px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(255, 255, 255, 0.03)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(20px);
+
+    transition: all 0.4s ease;
+
+    position: relative;
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* CARD GLOW */
+
+.home .information .text::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 255, 157, 0.12),
+            transparent,
+            rgba(0, 255, 157, 0.08)
+        );
+
+    opacity: 0;
+
+    transition: 0.4s ease;
+}
+
+/* CARD HOVER */
+
+.home .information .text:hover {
+    transform:
+        translateY(-10px)
+        scale(1.03);
+
+    border-color: rgba(0, 255, 157, 0.18);
+
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(0, 255, 157, 0.12);
+}
+
+.home .information .text:hover::before {
+    opacity: 1;
+}
+
+/* NUMBER */
+
+.home .information .text h1 {
+    font-size: 64px;
+    font-weight: 800;
+
+    letter-spacing: -2px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #7fffc5
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 25px rgba(0, 255, 157, 0.12);
+}
+
+/* LABEL */
+
+.home .information .text p {
+    margin-top: 10px;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 16px;
+    font-weight: 500;
+
+    letter-spacing: 0.5px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px) {
+
+    .home .information {
+        flex-direction: column;
+    }
+
+}
+
+@media(max-width:1020px) {
+
+    .home {
+        padding: 30px 20px;
+    }
+
+    .home .information {
+        margin-top: 90px;
+    }
+
+}
+
+@media(max-width:800px) {
+
+    .home .information .con {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .home .information .text {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .home .information .text h1 {
+        font-size: 52px;
+    }
+
+}
+
+@media(max-width:500px) {
+
+    .home .information {
+        gap: 20px;
+    }
+
+    .home .information .text {
+        padding: 30px 25px;
+        border-radius: 24px;
+    }
+
+    .home .information .text h1 {
+        font-size: 42px;
+    }
+
+    .home .information .text p {
+        font-size: 14px;
+    }
+
+}

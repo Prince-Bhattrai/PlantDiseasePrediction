@@ -1,0 +1,323 @@
+.auth {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    height: 100%;
+    padding-top: 80px;
+}
+
+.auth img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    filter: brightness(0.45) saturate(1.2);
+    transform: scale(1.05);
+    height: 100%;
+}
+
+.auth .container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 60, 40, 0.35)
+        );
+    padding: 20px;
+}
+
+.auth .top-text {
+    text-align: center;
+    margin-bottom: 25px;
+    max-width: 600px;
+}
+
+.auth .top-text h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-shadow: 0px 0px 20px rgba(0, 255, 150, 0.4);
+}
+
+.auth .top-text p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.auth form {
+    width: 500px;
+    border-radius: 28px;
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+    transition: all 0.35s ease;
+}
+
+.auth form:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.45),
+        0 0 20px rgba(0, 255, 140, 0.15);
+}
+
+.auth form .items {
+    padding: 10px 40px 40px;
+}
+
+.auth form .navigator {
+    display: flex;
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.auth form .navigator p {
+    width: 50%;
+    padding: 22px;
+    text-align: center;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.auth form .navigator p:hover {
+    color: #fff;
+}
+
+.auth form .navigator .active {
+    color: #00ff9d;
+}
+
+.auth form .navigator .active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 60%;
+    height: 3px;
+    border-radius: 20px;
+    background: linear-gradient(
+        90deg,
+        #00ff9d,
+        #00c97b
+    );
+
+    box-shadow: 0 0 15px #00ff9d;
+}
+
+.auth form fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 22px;
+}
+
+.auth form label {
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.auth form .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auth form .top p {
+    position: static !important;
+    font-size: 13px;
+    color: #00ff9d;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.auth form .top p:hover {
+    opacity: 0.7;
+}
+
+.auth form input {
+    width: 100%;
+    padding: 16px 18px 16px 50px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+
+    transition: all 0.3s ease;
+}
+
+.auth form input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.auth form input:focus {
+    border-color: #00ff9d;
+    background: rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 0 0 4px rgba(0, 255, 157, 0.1),
+        0 0 20px rgba(0, 255, 157, 0.12);
+}
+
+.auth form fieldset > p,
+.auth form fieldset .icons {
+    position: absolute;
+    top: 40px;
+    left: 16px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.auth form fieldset .icons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    left: 30;
+    padding-right: 26px;
+}
+
+.auth form fieldset .icons svg:last-child {
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.auth form fieldset .icons svg:last-child:hover {
+    color: #00ff9d;
+    transform: scale(1.1);
+}
+
+.auth form button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    margin-top: 24px;
+
+    border: none;
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00ff9d,
+            #00c97b,
+            #008f5a
+        );
+
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    box-shadow:
+        0 10px 25px rgba(0, 255, 157, 0.25);
+}
+
+.auth form button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 255, 157, 0.35);
+}
+
+.auth form button:active {
+    transform: scale(0.98);
+}
+
+.auth form .other {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.auth form .other p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.auth form .other div {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.auth form .google-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    box-shadow: none;
+}
+
+.auth form .google-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 600px) {
+
+    .auth {
+        overflow-y: auto;
+    }
+
+    .auth form {
+        width: 100%;
+        border-radius: 22px;
+    }
+
+    .auth form .items {
+        padding: 10px 20px 30px;
+    }
+
+    .auth .top-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .auth .top-text p {
+        font-size: 14px;
+    }
+
+}
