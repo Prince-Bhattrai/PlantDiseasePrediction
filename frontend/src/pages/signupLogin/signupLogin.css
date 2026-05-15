@@ -18,6 +18,39 @@
     height: 100%;
 }
 
+.auth::before {
+    content: '';
+
+    position: absolute;
+    inset: 0;
+
+    background-image: url("../../assets/images/loginBackground.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter:
+        brightness(0.28)
+        saturate(1.2);
+    transform: scale(1.05);
+    z-index: -3;
+}
+
+.auth::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.82),
+            rgba(0, 60, 40, 0.7)
+        );
+    z-index: -2;
+}
+
+
 .auth .container {
     position: relative;
     z-index: 2;

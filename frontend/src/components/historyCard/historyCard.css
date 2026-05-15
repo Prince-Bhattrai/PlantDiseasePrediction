@@ -1,0 +1,315 @@
+.history-card {
+    width: 320px;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    transition: all 0.4s ease;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(255, 255, 255, 0.03)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.22);
+}
+
+/* HOVER */
+
+.history-card:hover {
+    transform:
+        translateY(-12px)
+        scale(1.02);
+
+    border-color: rgba(0, 255, 157, 0.18);
+
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(0, 255, 157, 0.08);
+}
+
+/* IMAGE */
+
+.history-card img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: all 0.5s ease;
+}
+
+/* HEAD */
+
+.history-card .head {
+    width: 100%;
+    overflow: hidden;
+    height: 230px;
+
+    position: relative;
+}
+
+/* IMAGE HOVER */
+
+.history-card:hover img {
+    transform: scale(1.08);
+}
+
+/* OVERLAY */
+
+.history-card .head .fade {
+    position: absolute;
+
+    inset: 0;
+
+    align-items: center;
+    justify-content: center;
+
+    display: flex;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 50, 30, 0.45)
+        );
+
+    transition: all 0.35s ease;
+
+    opacity: 0;
+
+    backdrop-filter: blur(6px);
+}
+
+.history-card:hover .head .fade {
+    opacity: 1;
+}
+
+/* BUTTON */
+
+.history-card .fade button {
+    padding: 14px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0.08)
+        );
+
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 16px;
+
+    transition: all 0.3s ease;
+
+    cursor: pointer;
+}
+
+.history-card .fade button:hover {
+    transform: scale(1.05);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 255, 157, 0.28),
+            rgba(0, 180, 120, 0.18)
+        );
+}
+
+/* CARD DATA */
+
+.history-card .card-data {
+    padding: 22px;
+
+    backdrop-filter: blur(20px);
+}
+
+/* TOP */
+
+.history-card .card-data .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+/* LEFT TEXT */
+
+.history-card .card-data .card-top .left-side>:nth-child(1) {
+    font-size: 24px;
+    font-weight: 700;
+
+    color: #ffffff;
+
+    text-transform: capitalize;
+}
+
+.history-card .card-data .card-top .left-side>:nth-child(2) {
+    margin-top: 6px;
+
+    color: rgba(255, 255, 255, 0.6);
+
+    font-size: 14px;
+
+    text-transform: capitalize;
+}
+
+/* CONFIDENCE */
+
+.history-card .card-data .card-top .high,
+.history-card .card-data .card-top .low {
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.history-card .card-data .card-top .high {
+    background:
+        rgba(0, 255, 157, 0.12);
+
+    color: #7dffc8;
+
+    border: 1px solid rgba(0, 255, 157, 0.15);
+}
+
+.history-card .card-data .card-top .low {
+    background:
+        rgba(255, 80, 80, 0.12);
+
+    color: #ff9d9d;
+
+    border: 1px solid rgba(255, 90, 90, 0.15);
+}
+
+/* DIVIDER */
+
+.history-card hr {
+    border: none;
+    height: 1px;
+
+    margin: 18px 0;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            rgba(255, 255, 255, 0.12),
+            transparent
+        );
+}
+
+/* TAIL */
+
+.history-card .card-data .tail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+/* DATE */
+
+.history-card .card-data .tail>:nth-child(1) {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 13px;
+
+    color: rgba(255, 255, 255, 0.62);
+}
+
+/* STATUS */
+
+.history-card .card-data .tail>:nth-child(2) {
+    text-transform: uppercase;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    letter-spacing: 0.5px;
+}
+
+/* INFECTED */
+
+.history-card .card-data .tail .inf {
+    color: #ffb3b3;
+
+    background:
+        rgba(255, 80, 80, 0.14);
+
+    border: 1px solid rgba(255, 80, 80, 0.18);
+}
+
+/* HEALTHY */
+
+.history-card .card-data .tail .hel {
+    background:
+        rgba(0, 255, 157, 0.14);
+
+    color: #7effc8;
+
+    border: 1px solid rgba(0, 255, 157, 0.16);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:700px) {
+
+    .history-card {
+        width: 100%;
+    }
+
+    .history-card .head {
+        height: 260px;
+    }
+
+}
+
+@media(max-width:500px) {
+
+    .history-card .card-data {
+        padding: 18px;
+    }
+
+    .history-card .card-data .card-top {
+        flex-direction: column;
+    }
+
+}

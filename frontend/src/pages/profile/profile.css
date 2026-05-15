@@ -1,0 +1,35 @@
+.profile {
+    min-height: 100vh;
+    position: relative;
+    padding-top: 100px;
+
+}
+
+.profile::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url("../../assets/images/loginBackground.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    inset: 0;
+    z-index: -3;
+    top: 0;
+    filter:
+        brightness(0.3) saturate(1.1);
+
+}
+
+.profile::after {
+    content: "";
+    position: absolute;
+    background:
+        linear-gradient(135deg,
+            rgba(0, 0, 0, 0.82),
+            rgba(0, 55, 35, 0.7));
+
+    backdrop-filter: blur(12px);
+
+}

@@ -6,31 +6,35 @@
 }
 
 .home::before {
-    content: "";
+    content: '';
+
     position: absolute;
     inset: 0;
+
     background-image: url("../../assets/images/loginBackground.png");
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    height: 100%;
-    z-index: -2;
+    filter:
+        brightness(0.28)
+        saturate(1.2);
+    transform: scale(1.05);
+    z-index: -3;
 }
 
 .home::after {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
-    height: 100%;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     background:
         linear-gradient(
             135deg,
-            rgba(0, 0, 0, 0.45),
-            rgba(0, 60, 40, 0.35)
+            rgba(0, 0, 0, 0.82),
+            rgba(0, 60, 40, 0.7)
         );
-
-    z-index: -1;
-    backdrop-filter: blur(10px);
+    z-index: -2;
 }
 
 .home .information::before {

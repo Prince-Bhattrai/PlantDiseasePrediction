@@ -29,14 +29,16 @@ nav {
         0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* LOGO */
+
+nav .logo>:nth-child(2){
+    display: none;
+    
+}
 
 nav>:nth-child(1) {
     font-size: 30px;
     font-weight: 800;
-
     letter-spacing: -1px;
-
     background:
         linear-gradient(
             135deg,
@@ -59,9 +61,8 @@ nav>:nth-child(1):hover {
     transform: scale(1.03);
 }
 
-/* NAV LINKS */
 
-nav ul {
+nav ul , nav .show{
     display: flex;
     align-items: center;
     gap: 16px;
@@ -80,9 +81,8 @@ nav ul {
     backdrop-filter: blur(10px);
 }
 
-/* EACH LINK */
 
-nav ul li {
+nav li {
     position: relative;
 
     padding: 12px 22px;
@@ -101,9 +101,8 @@ nav ul li {
     overflow: hidden;
 }
 
-/* HOVER */
 
-nav ul li:hover {
+nav  li:hover {
     color: #ffffff;
 
     background:
@@ -112,9 +111,8 @@ nav ul li:hover {
     transform: translateY(-2px);
 }
 
-/* ACTIVE */
 
-nav ul .active {
+nav .active {
     color: #ffffff;
 
     background:
@@ -129,9 +127,8 @@ nav ul .active {
         0 10px 25px rgba(0, 255, 157, 0.2);
 }
 
-/* ACTIVE GLOW */
 
-nav ul .active::before {
+nav .active::before{
     content: "";
 
     position: absolute;
@@ -149,7 +146,6 @@ nav ul .active::before {
     pointer-events: none;
 }
 
-/* LOGIN BUTTON */
 
 nav button {
     padding: 14px 28px;
@@ -178,7 +174,6 @@ nav button {
         0 12px 30px rgba(0, 255, 157, 0.22);
 }
 
-/* BUTTON HOVER */
 
 nav button:hover {
     transform:
@@ -189,13 +184,15 @@ nav button:hover {
         0 18px 40px rgba(0, 255, 157, 0.35);
 }
 
-/* BUTTON ACTIVE */
 
 nav button:active {
     transform: scale(0.97);
 }
 
-/* RESPONSIVE */
+nav .hide{
+    display: none;
+}
+
 
 @media(max-width:850px) {
 
@@ -238,10 +235,37 @@ nav button:active {
         width: 100%;
         justify-content: center;
         flex-wrap: wrap;
+        display: none;
     }
+
 
     nav button {
         width: 100%;
+        display: none;
+    }
+    nav .show{
+        display: block;
+        display: flex;
+    }
+
+    nav .logo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    
+
+    nav>:nth-child(1):hover{
+            transform: scale(1);
+
+    }
+    nav .logo>:nth-child(2){
+        display: block;
+    }
+    nav .show-btn{
+        display: block;
     }
 
 }

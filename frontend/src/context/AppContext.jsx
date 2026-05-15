@@ -6,11 +6,13 @@ export const AppContext = createContext()
 export const AppProvider = ({ children }) => {
     const [currUser, setCurrUser] = useState([])
     const [history, setHistory] = useState([])
+    const [token, setToken] = useState("")
 
     useEffect(() => {
         const token = localStorage.getItem("token")
         if (!token) return;
         getUserData(token)
+        setToken(token)
     }, [])
 
     const getUserData = async (token) => {
@@ -37,7 +39,7 @@ export const AppProvider = ({ children }) => {
 
     }
     return (
-        <AppContext.Provider value={{currUser,history}}>
+        <AppContext.Provider value={{currUser,history, setHistory, token}}>
             {children}
         </AppContext.Provider>
     )

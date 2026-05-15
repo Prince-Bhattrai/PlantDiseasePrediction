@@ -8,19 +8,27 @@ import History from './pages/history/history'
 import Prediction from './pages/prediction/prediction'
 import HistoryDetails from './pages/historyDetails/historyDetails'
 import { ToastContainer } from "react-toastify"
+import Notfound from './components/notfound/notfound'
+import Profile from './pages/profile/profile'
 const App = () => {
-  const {name} = useContext(AppContext)
+  const { token } = useContext(AppContext)
   return (
     <>
-    <Navbar />
-    <ToastContainer />
-    <Routes>
-      <Route path='/auth' element={<SignupLogin />}/>
-      <Route path = "/" element = {<Home />} />
-      <Route path = "/history" element={<History />} />
-      <Route path = "/prediction" element = {<Prediction />} />
-      <Route path = "/prediction/:id" element={<HistoryDetails />} />
-    </Routes>
+      <Navbar />
+      <ToastContainer />
+      <Routes>
+        <Route path='/auth' element={<SignupLogin />} />
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<Notfound />} />
+        {token && (
+          <>
+            <Route path="/history" element={<History />} />
+            <Route path="/prediction" element={<Prediction />} />
+            <Route path="/prediction/:id" element={<HistoryDetails />} />
+            <Route path = "/profile/:id" element={<Profile />} />
+          </>
+        )}
+      </Routes>
     </>
   )
 }
