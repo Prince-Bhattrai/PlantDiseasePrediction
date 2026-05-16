@@ -146,7 +146,7 @@ const Prediction = () => {
               )}
 
               {image && (
-                <img
+                <img className={loading?"loading-image":""}
                   src={URL.createObjectURL(image)}
                   alt="preview"
                 />

@@ -149,3 +149,65 @@ export const getCurrUser = async (req, res) => {
         });
     }
 }
+
+
+export const userSetting = async (req, res) => {
+
+    const { id } = req.user
+
+    const { name, email, address } = req.body
+
+    try {
+
+        const user = await User.findById(id)
+
+        if (!user) {
+            return res.status(400).json({
+                success: false,
+                message: "User not found!"
+            })
+        }
+
+        const isUniqueEmail = await User.findOne({ email })
+
+        if (
+            isUniqueEmail &&
+            isUniqueEmail._id.toString() !== id
+        ) {
+            return res.status(400).json({
+                success: false,
+                message: "Try different email!"
+            })
+        }
+
+        if (user._id.toString() !== id) {
+            return res.status(401).json({
+                success: false,
+                message: "Unauthorized!"
+            })
+        }
+
+        if (name) user.name = name
+
+        if (email) user.email = email
+
+        if (address) user.address = address
+
+        await user.save()
+
+        return res.status(200).json({
+            success: true,
+            message: "User updated",
+            user
+        })
+
+    } catch (error) {
+
+        console.log(error)
+
+        return res.status(500).json({
+            success: false,
+            message: "Server error please try again later!"
+        })
+    }
+}

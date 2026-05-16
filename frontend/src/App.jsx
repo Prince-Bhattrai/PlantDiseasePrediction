@@ -10,6 +10,7 @@ import HistoryDetails from './pages/historyDetails/historyDetails'
 import { ToastContainer } from "react-toastify"
 import Notfound from './components/notfound/notfound'
 import Profile from './pages/profile/profile'
+import Footer from './components/footer/footer'
 const App = () => {
   const { token } = useContext(AppContext)
   return (
@@ -29,6 +30,7 @@ const App = () => {
           </>
         )}
       </Routes>
+      <Footer />
     </>
   )
 }

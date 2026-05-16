@@ -7,6 +7,7 @@ export const AppProvider = ({ children }) => {
     const [currUser, setCurrUser] = useState([])
     const [history, setHistory] = useState([])
     const [token, setToken] = useState("")
+    const [profileInfo, setProfileInfo] = useState("")
 
     useEffect(() => {
         const token = localStorage.getItem("token")
@@ -36,10 +37,20 @@ export const AppProvider = ({ children }) => {
         } catch (error) {
             console.log(error)
         }
+        try {
+            const profileInfoRes = await axios.get(`${apiUrl}/v1/api/history/profile-info`, config)
+            console.log(profileInfoRes.data)
+            setProfileInfo(profileInfoRes.data.profileInfo)
+
+        } catch (error) {
+            console.log(error)
+        }
 
     }
     return (
-        <AppContext.Provider value={{currUser,history, setHistory, token}}>
+        <AppContext.Provider value={{currUser,history, setHistory, token,
+            profileInfo,setCurrUser
+        }}>
             {children}
         </AppContext.Provider>
     )

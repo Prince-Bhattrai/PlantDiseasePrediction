@@ -1,35 +1,347 @@
 .profile {
     min-height: 100vh;
-    position: relative;
-    padding-top: 100px;
 
+    position: relative;
+
+    padding: 120px 6% 60px;
+
+    overflow: hidden;
+
+    isolation: isolate;
 }
 
 .profile::before {
     content: "";
+
     position: absolute;
-    height: 100%;
-    width: 100%;
+    inset: 0;
+
     background-image: url("../../assets/images/loginBackground.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    inset: 0;
-    z-index: -3;
-    top: 0;
-    filter:
-        brightness(0.3) saturate(1.1);
 
+    filter:
+        brightness(0.28)
+        saturate(1.15);
+
+    transform: scale(1.05);
+
+    z-index: -3;
 }
 
 .profile::after {
     content: "";
-    position: absolute;
-    background:
-        linear-gradient(135deg,
-            rgba(0, 0, 0, 0.82),
-            rgba(0, 55, 35, 0.7));
 
-    backdrop-filter: blur(12px);
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.84),
+            rgba(0, 55, 35, 0.72)
+        );
+
+    backdrop-filter: blur(14px);
+
+    z-index: -2;
+}
+
+.profile .user-info {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    gap: 30px;
+}
+
+.profile .user-card,
+.profile .user-plan,
+.profile .ana-card {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(255, 255, 255, 0.03)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(20px);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.22);
+
+    transition: all 0.35s ease;
+}
+.profile .user-card:hover,
+.profile .user-plan:hover,
+.profile .ana-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(0, 255, 157, 0.14);
+
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.3),
+        0 0 25px rgba(0, 255, 157, 0.08);
+}
+
+.profile .user-card {
+    padding: 40px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+.profile .user-card>:nth-child(1) {
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 32px;
+    font-weight: 800;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00ff9d,
+            #008f5a
+        );
+
+    box-shadow:
+        0 15px 35px rgba(0, 255, 157, 0.22);
+}
+
+
+.profile .user-card .user-details>:nth-child(1) {
+    font-size: 30px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.profile .user-card .user-details>:nth-child(2) {
+    margin-top: 8px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 15px;
+}
+
+
+.profile .user-card .join {
+    margin-left: auto;
+
+    text-align: right;
+}
+
+.profile .user-card .join>:nth-child(1) {
+    padding: 10px 16px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    background:
+        rgba(0, 255, 157, 0.12);
+
+    color: #7dffc8;
+
+    border: 1px solid rgba(0, 255, 157, 0.14);
+}
+
+.profile .user-card .join>:nth-child(2) {
+    margin-top: 14px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-size: 13px;
+}
+
+
+.profile .user-plan {
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.profile .user-plan .plan-info>:nth-child(1) {
+    color: rgba(255, 255, 255, 0.6);
+
+    font-size: 14px;
+}
+
+.profile .user-plan .plan-info>:nth-child(2) {
+    margin-top: 12px;
+
+    font-size: 34px;
+    font-weight: 800;
+
+    color: #ffffff;
+}
+
+.profile .user-plan .plan-info>:nth-child(3) {
+    margin-top: 10px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-size: 14px;
+}
+
+
+.profile .user-plan button, .profile .logout-box button{
+    margin-top: 30px;
+
+    padding: 16px;
+
+    border: none;
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    background:
+        linear-gradient(
+            135deg,
+            #00ff9d,
+            #00b36f
+        );
+
+    transition: all 0.35s ease;
+
+    box-shadow:
+        0 12px 30px rgba(0, 255, 157, 0.22);
+}
+
+.profile .logout-box{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 30px;
+}
+
+
+.profile .user-plan button:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 18px 40px rgba(0, 255, 157, 0.3);
+}
+
+
+.profile .card-container {
+    margin-top: 35px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+.profile .ana-card {
+    padding: 30px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.profile .ana-card>:nth-child(1) {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 22px;
+
+    font-size: 32px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00ff9d,
+            #008f5a
+        );
+
+    box-shadow:
+        0 12px 30px rgba(0, 255, 157, 0.2);
+}
+
+
+.profile .ana-card .ana>:nth-child(1) {
+    color: rgba(255, 255, 255, 0.62);
+
+    font-size: 14px;
+}
+
+.profile .ana-card .ana>:nth-child(2) {
+    margin-top: 8px;
+
+    font-size: 34px;
+    font-weight: 800;
+
+    color: #ffffff;
+}
+
+
+@media(max-width:1100px) {
+
+    .profile .user-info {
+        grid-template-columns: 1fr;
+    }
+
+    .profile .card-container {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width:700px) {
+
+    .profile {
+        padding: 110px 20px 40px;
+    }
+
+    .profile .user-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile .user-card .join {
+        margin-left: 0;
+        text-align: left;
+    }
+
+    .profile .user-card .info>:nth-child(1) {
+        font-size: 24px;
+    }
+
+    .profile .user-plan .plan-info>:nth-child(2) {
+        font-size: 28px;
+    }
 
 }

@@ -142,7 +142,7 @@ body{
   color:#00724C ;
 }
 
-
+/* 
 body::before {
     content: "";
     position: absolute;
@@ -170,4 +170,4 @@ body::after {
 
     z-index: -1;
     backdrop-filter: blur(10px);
-}
+} */

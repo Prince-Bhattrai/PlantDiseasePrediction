@@ -443,6 +443,60 @@
 
 }
 
+.prediction .loading-image{
+    position: relative;
+}
+
+.prediction .loading-image::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    backdrop-filter: blur(10px);
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+
+.prediction .loading-image::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    backdrop-filter: blur(30px);
+    top: 0;
+    height: 100%;
+    width: 100%;
+}.prediction .loading-image{
+    position: relative;
+    overflow: hidden;
+}
+
+.prediction .loading-image::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.prediction .loading-image::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+
+    background: rgba(0, 0, 0, 0.15);
+}
+
 @media(max-width:700px) {
 
     .prediction {

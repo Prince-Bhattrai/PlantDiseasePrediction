@@ -33,12 +33,10 @@
     inset: 0;
 
     z-index: -2;
-
     background:
         linear-gradient(135deg,
             rgba(0, 0, 0, 0.82),
             rgba(0, 55, 35, 0.7));
-
     backdrop-filter: blur(12px);
 }
 
@@ -47,10 +45,8 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-
     gap: 40px;
 }
-
 
 .history .top .texts {
     width: 50%;
@@ -59,15 +55,12 @@
 .history .top .texts h1 {
     font-size: 58px;
     font-weight: 800;
-
     line-height: 68px;
     letter-spacing: -2px;
-
     background:
         linear-gradient(135deg,
             #ffffff,
             #8fffcf);
-
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -78,15 +71,12 @@
 .not-found {
     font-size: 58px;
     font-weight: 800;
-
     line-height: 68px;
     letter-spacing: -2px;
-
     background:
         linear-gradient(135deg,
             #ffffff,
             #8fffcf);
-
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 

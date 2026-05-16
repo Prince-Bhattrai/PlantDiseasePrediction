@@ -153,3 +153,71 @@ export const deleteHistory = async (req, res) => {
         });
     }
 };
+
+
+export const getProfileInfo = async (req, res) => {
+
+    const { id } = req.user
+
+    if (!id) {
+        return res.status(400).json({
+            success: false,
+            message: "Id not provided!"
+        })
+    }
+
+    try {
+
+        const history = await History.find({ user: id })
+
+        const totalPrediction = history.length
+
+        const healthyPredictions = history.filter(
+            (h) =>
+                h?.disease?.toLowerCase() === "healthy"
+        ).length
+
+        const healthScore = totalPrediction > 0
+            ? (
+                (healthyPredictions / totalPrediction) * 100
+            ).toFixed(1)
+            : 0
+
+        const speciesTracked = [
+            ...new Set(
+                history
+                    .filter((h) => h?.plant)
+                    .map((h) => h.plant)
+            )
+        ].length
+
+        const recentPredictions = history
+            .sort(
+                (a, b) =>
+                    new Date(b.createdAt) -
+                    new Date(a.createdAt)
+            )
+            .slice(0, 5)
+
+        return res.status(200).json({
+            success: true,
+
+            profileInfo: {
+                totalPrediction,
+                healthyPredictions,
+                healthScore,
+                speciesTracked,
+                recentPredictions
+            }
+        })
+
+    } catch (error) {
+
+        console.log(error)
+
+        return res.status(500).json({
+            success: false,
+            message: "Server error please try again later!"
+        })
+    }
+}

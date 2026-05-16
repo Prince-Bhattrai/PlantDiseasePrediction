@@ -9,11 +9,16 @@ const Navbar = () => {
     const { currUser, token } = useContext(AppContext)
     const [show, setShow] = useState(false)
 
-    
+
+    const splitName = currUser?.name?.split(" ") || []
+
+    const first = splitName?.[0]?.[0] || ""
+    const last = splitName?.at(-1)?.[0] || ""
+
     return (
         <nav>
             <div className="logo">
-                <p>BotaniScan</p>
+                <p onClick={()=>window.location.href = "/"}>BotaniScan</p>
 
                 <p onClick={() => setShow(!show)}><MdMenu style={{ color: "#fff" }} /></p>
             </div>
@@ -24,8 +29,13 @@ const Navbar = () => {
                     <li onClick={() => { setActive("predict"), navigate("/prediction"), setShow(false) }} className={active === "predict" ? "active" : ""}>Predict</li>
                 </ul>
             )}
-            {token? <button onClick={()=>navigate(`/profile/${currUser._id}`)} className={show && currUser ? "show-btn" : ""}>Profile</button> : (
-                <button className={show ? "show-btn" : ""} onClick={() => navigate("/auth")}>Log in</button>
+            {token ? <button style={{
+                padding:"12px",
+                fontSize:"20px",
+                borderRadius:"50%",
+                width:"fit-content"
+            }} onClick={() => navigate(`/profile/${currUser?._id}`)} className={show && currUser ? "show-btn" : ""}>{first}{last}</button> : (
+                <button className={show ? "show-btn" : ""} onClick={() => { navigate("/auth"), setShow(false) }}>Log in</button>
 
             )}
 
