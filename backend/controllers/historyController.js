@@ -29,6 +29,7 @@ export const predict = async (req, res) => {
             formData,
             {
                 headers: formData.getHeaders(),
+                timeout:120000
             }
         );
 
