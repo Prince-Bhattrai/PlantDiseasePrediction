@@ -5,6 +5,7 @@ import cloudinary from "../config/cloudinaryConfig.js";
 
 export const predict = async (req, res) => {
     try {
+        console.log(process.env.MODEL_URL)
 
         const image = req.file;
         const { id } = req.user;
