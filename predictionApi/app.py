@@ -3,8 +3,22 @@ from tensorflow.keras.models import load_model
 from PIL import Image
 import io
 import numpy as np
+from fastapi.middleware.cors import CORSMiddleware
+
+hosts = [
+    "http://localhost:4000",
+    "https://botani-scan.onrender.com"
+]
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=hosts,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Load trained model
 model = load_model("./models/plant_disease_prediction.h5")
