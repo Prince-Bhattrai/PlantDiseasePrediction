@@ -1,163 +1,315 @@
-# BotaniScan - Plant Disease Prediction System
+# BotaniScan - AI Powered Plant Disease Detection Platform
 
-BotaniScan is a full-stack AI-based web application designed to detect plant diseases from leaf images using a deep learning model. The system helps users quickly identify plant health issues and provides predictions with confidence scores.
-
----
-
-## Project Overview
-
-This project is built using a machine learning model trained on the PlantVillage dataset, which contains 35 different plant disease classes.
-
-The application allows users to upload plant leaf images and receive:
-- Disease prediction
-- Confidence score
-- Stored prediction history
-
-BotaniScan combines machine learning, FastAPI, Node.js, React.js, and MongoDB into a complete full-stack system.
+BotaniScan is a full-stack AI-based web application designed to detect plant diseases from plant leaf images using a deep learning model. The system helps users quickly identify plant health issues and provides predictions with confidence scores.
 
 ---
 
-## Machine Learning Model
+# Live Demo
 
-- Dataset: PlantVillage Dataset  
-- Framework: Keras (TensorFlow backend)  
-- Number of Classes: 35  
-- Model Type: Convolutional Neural Network (CNN) for image classification  
-- Output: Disease name with confidence score  
-
-The trained model is served through a FastAPI backend for real-time predictions.
-
-### Training Details
-
-The model was trained for 5 epochs due to computational limitations. At this stage, the model achieved approximately 90% accuracy. With further training (50–100 epochs), the accuracy can potentially be improved to above 95%.
+Frontend: Your Vercel URL  
+Backend API: Your Render URL  
+ML API: Your FastAPI Render URL  
 
 ---
 
-## Backend Architecture
+# Project Overview
 
-### FastAPI (ML Service)
-- Loads the trained Keras model  
-- Receives image requests from Node.js backend  
-- Returns prediction results  
-- Runs using Uvicorn server  
+This project combines Deep Learning, Full-Stack Web Development, Cloud Storage, and REST API architecture into a complete production-style application.
 
-### Node.js Backend
-- Acts as an intermediary between frontend and FastAPI  
-- Handles authentication and core business logic  
-- Stores prediction history in MongoDB  
-- Manages image uploads and processing  
+The application allows users to:
 
-Key features:
-- JWT-based authentication  
-- Password hashing using bcrypt  
-- File uploads using Multer  
-- Cloud image storage using Cloudinary  
+- Upload plant leaf images
+- Detect plant diseases using AI
+- View confidence scores
+- Store prediction history
+- Authenticate securely using JWT and Google OAuth
+
+The deep learning model is trained using the PlantVillage dataset containing 35 disease classes.
 
 ---
 
-## Frontend (React.js)
+# Features
 
-The frontend is built using React.js with a clean glass-style UI design.
-
-Users can:
-- Register and log in  
-- Upload plant images  
-- View prediction results  
-- Access prediction history  
-
-Libraries used:
-- Axios for API requests  
-- React Icons for UI icons  
-- Custom CSS for glassmorphism design  
+- Plant disease detection using CNN
+- Confidence score prediction
+- JWT Authentication
+- Google OAuth Login
+- Prediction history tracking
+- Cloud image upload using Cloudinary
+- Separate ML inference service using FastAPI
+- Responsive modern UI
+- MongoDB database integration
+- REST API architecture
 
 ---
 
-## Database
+# Tech Stack
 
-MongoDB is used to store:
-- User information  
-- Uploaded image URLs  
-- Prediction results  
-- Confidence scores  
-- Disease labels  
+## Frontend
 
----
+- React.js
+- Axios
+- React Icons
+- CSS
 
-## Image Storage
+## Backend
 
-Cloudinary is used for storing uploaded images, ensuring fast and scalable image management.
+- Node.js
+- Express.js
+- JWT
+- bcrypt
+- Multer
 
----
+## Machine Learning
 
-## Authentication
+- TensorFlow
+- Keras
+- NumPy
+- Pandas
+- FastAPI
+- Uvicorn
 
-The system uses JWT-based authentication for secure user login and signup. Passwords are hashed using bcrypt before being stored in the database.
+## Database & Storage
 
----
-
-## Tech Stack
-
-Frontend:
-- React.js  
-- Axios  
-- React Icons  
-- CSS (Glass UI Design)  
-
-Backend:
-- Node.js  
-- Express.js  
-- FastAPI  
-- Uvicorn  
-
-Machine Learning:
-- TensorFlow / Keras  
-- NumPy  
-- Pandas  
-
-Database and Storage:
-- MongoDB  
-- Cloudinary  
+- MongoDB
+- Cloudinary
 
 ---
 
-## Features
+# System Architecture
 
-- Plant disease detection using deep learning  
-- Confidence score for predictions  
-- User authentication system  
-- Prediction history tracking  
-- Image upload and cloud storage  
-- Fast API-based inference system  
-- Modern UI design  
-
----
-
-## How the System Works
-
-1. User uploads a plant leaf image from the frontend  
-2. Node.js backend receives and processes the request  
-3. Image is forwarded to FastAPI service  
-4. The trained Keras model predicts the disease  
-5. Result is stored in MongoDB and Cloudinary  
-6. Response is sent back to the frontend  
+```txt
+React Frontend
+      ↓
+Node.js / Express Backend
+      ↓
+FastAPI ML Service
+      ↓
+TensorFlow CNN Model
+      ↓
+MongoDB + Cloudinary
+```
 
 ---
 
-## Future Improvements
+# Machine Learning Model
 
-- Support for multiple languages  
-- Improved model accuracy with larger datasets  
-- Real-time camera-based prediction  
-- Docker-based deployment and CI/CD pipeline  
+## Dataset
+
+PlantVillage Dataset
+
+## Model Details
+
+- Model Type: Convolutional Neural Network (CNN)
+- Framework: TensorFlow / Keras
+- Number of Classes: 35
+- Output: Disease prediction with confidence score
+
+## Training Details
+
+The model was trained for 5 epochs due to computational limitations and achieved approximately 90% accuracy.
+
+Future improvements include:
+
+- Longer training schedules
+- Data augmentation
+- Transfer learning
+- Hyperparameter optimization
+- Larger datasets for better generalization
 
 ---
 
-## Developer
+# Authentication
+
+The application uses:
+
+- JWT-based authentication
+- Password hashing with bcrypt
+- Google OAuth login system
+
+---
+
+# Database
+
+MongoDB stores:
+
+- User information
+- Prediction history
+- Disease labels
+- Confidence scores
+- Uploaded image URLs
+
+---
+
+# Image Storage
+
+Cloudinary is used for cloud-based image storage and management.
+
+Benefits:
+
+- Fast image delivery
+- Scalable storage
+- Secure image hosting
+- CDN integration
+
+---
+
+# Folder Structure
+
+```txt
+BotaniScan/
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── backend/
+│   ├── routes/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   └── server.js
+│
+├── ml-api/
+│   ├── model/
+│   ├── app.py
+│   └── requirements.txt
+│
+└── README.md
+```
+
+---
+
+# Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/your-username/BotaniScan.git
+
+cd BotaniScan
+```
+
+---
+
+# Frontend Setup
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+Frontend runs on:
+
+```txt
+http://localhost:5173
+```
+
+---
+
+# Backend Setup
+
+```bash
+cd backend
+
+npm install
+
+npm start
+```
+
+Backend runs on:
+
+```txt
+http://localhost:5000
+```
+
+---
+
+# FastAPI ML Service Setup
+
+## Install Dependencies
+
+```bash
+cd ml-api
+
+pip install -r requirements.txt
+```
+
+## Start FastAPI Server
+
+```bash
+uvicorn app:app --reload
+```
+
+ML API runs on:
+
+```txt
+http://127.0.0.1:8000
+```
+
+---
+
+
+# API Workflow
+
+1. User uploads plant image from frontend
+2. Express backend receives image
+3. Image uploads to Cloudinary
+4. Backend forwards image to FastAPI service
+5. CNN model predicts disease
+6. Prediction result stored in MongoDB
+7. Response returned to frontend
+
+---
+
+# Deployment
+
+## Frontend
+
+Deployed on Vercel
+
+## Backend
+
+Deployed on Render
+
+## ML API
+
+Deployed separately on Render using FastAPI
+
+---
+
+# Future Improvements
+
+- Real-time camera prediction
+- Docker containerization
+- CI/CD pipeline integration
+- Multi-language support
+- Advanced analytics dashboard
+- Improved model accuracy
+- Mobile application support
+
+---
+
+# Challenges Faced
+
+- Connecting Node.js backend with FastAPI service
+- Handling image uploads efficiently
+- Maintaining consistent image preprocessing
+- Deploying ML inference service on cloud platforms
+- Managing authentication securely
+
+---
+
+# Developer
 
 Built by Prince Bhattrai
 
 ---
 
-## License
+# License
 
 This project is intended for educational and research purposes.
