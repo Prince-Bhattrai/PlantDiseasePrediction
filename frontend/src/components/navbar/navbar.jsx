@@ -33,8 +33,9 @@ const Navbar = () => {
                 padding:"12px",
                 fontSize:"20px",
                 borderRadius:"50%",
-                width:"fit-content"
-            }} onClick={() => navigate(`/profile/${currUser?._id}`)} className={show && currUser ? "show-btn" : ""}>{first}{last}</button> : (
+                width:"fit-content",
+                textTransform:"uppercase"
+            }} onClick={() =>{setShow(false), navigate(`/profile/${currUser?._id}`)}} className={show && currUser ? "show-btn" : ""}>{first}{last}</button> : (
                 <button className={show ? "show-btn" : ""} onClick={() => { navigate("/auth"), setShow(false) }}>Log in</button>
 
             )}

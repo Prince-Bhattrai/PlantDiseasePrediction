@@ -6,6 +6,11 @@ import "./signupLogin.css"
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import Spinner from '../../components/spinner/spinner'
+import { GoogleLogin, useGoogleLogin } from '@react-oauth/google'
+import { jwtDecode } from 'jwt-decode'
+import SetPassword from '../../components/setPassword/setPassword'
+import { useNavigate } from 'react-router-dom'
+
 const SignupLogin = () => {
     const [signUp, setSignup] = useState(false)
     const [showPass, setShowPass] = useState(false)
@@ -13,6 +18,8 @@ const SignupLogin = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
+    const [passOption, setPassOption] = useState(true)
+    const navigate = useNavigate()
 
     const authHandler = async (e) => {
         const apiUrl = import.meta.env.VITE_API_URL
@@ -60,6 +67,113 @@ const SignupLogin = () => {
             return toast.error(error.response.data.message || "Something went wrong!", { theme: "colored" })
         }
     }
+    // const handleSuccess = async (credentialResponse) => {
+
+    //     try {
+
+    //         if (!credentialResponse?.credential) {
+    //             return toast.error("Google login failed", {
+    //                 theme: "dark"
+    //             });
+    //         }
+
+    //         const decoded = jwtDecode(credentialResponse.credential);
+
+    //         const response = await axios.post(
+    //             `${import.meta.env.VITE_API_URL}/v1/api/user/googleAuth`,
+    //             {
+    //                 name: decoded.name,
+    //                 email: decoded.email,
+    //             }
+    //         );
+
+    //         if (response.data.success) {
+
+    //             localStorage.setItem("token", response.data.token);
+
+    //             toast.success(response.data.message, {
+    //                 theme: "dark"
+    //             });
+
+    //             window.location.href = "/";
+    //         }
+
+    //     } catch (error) {
+
+    //         console.log(error);
+
+    //         toast.error(
+    //             error?.response?.data?.message || "Something went wrong",
+    //             {
+    //                 theme: "dark"
+    //             }
+    //         );
+    //     }
+    // };
+
+    const handleError = (err) => {
+        return toast(`Login failed ${err}`, { theme: "dark" })
+    }
+
+    const login = useGoogleLogin({
+
+    onSuccess: async (tokenResponse) => {
+
+        try {
+
+            const userInfo = await axios.get(
+                "https://www.googleapis.com/oauth2/v3/userinfo",
+                {
+                    headers: {
+                        Authorization: `Bearer ${tokenResponse.access_token}`
+                    }
+                }
+            );
+
+            const response = await axios.post(
+                `${import.meta.env.VITE_API_URL}/v1/api/user/googleAuth`,
+                {
+                    name: userInfo.data.name,
+                    email: userInfo.data.email,
+                }
+            );
+
+            if (response.data.success) {
+
+                localStorage.setItem("token", response.data.token);
+
+                toast.success(response.data.message, {
+                    theme: "dark"
+                });
+
+                window.location.href = "/";
+            }
+
+        } catch (error) {
+
+            console.log(error);
+
+            toast.error(
+                error?.response?.data?.message || "Something went wrong",
+                {
+                    theme: "dark"
+                }
+            );
+        }
+    },
+
+    onError: (error) => {
+        console.log(error);
+
+        toast.error("Google login failed", {
+            theme: "dark"
+        });
+    }
+});
+
+const loginBtn = () => {
+    login();
+};
     return (
         <div className="auth">
             <img src={loginBackground} alt="" />
@@ -117,10 +231,23 @@ const SignupLogin = () => {
                             <p>OR CONTINUE WITH</p>
                             <div></div>
                         </div>
-                        <button className='google-btn'>Google</button>
+                        <button type='button' onClick={() => loginBtn()} className='google-btn'>
+                            {/* <GoogleLogin
+                                onSuccess={handleSuccess}
+                                onError={handleError}
+                                theme='outline'
+                                size='medium'
+                                text='Continue with'
+
+                            /> */}
+
+                           Google
+                        </button>
                     </div>
                 </form>
             </div>
+
+
 
         </div>
     )

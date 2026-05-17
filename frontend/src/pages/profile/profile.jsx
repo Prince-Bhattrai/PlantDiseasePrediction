@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import "./profile.css"
 import { AppContext } from '../../context/AppContext'
 import { MdOutlineAnalytics, MdOutlineVerified } from 'react-icons/md'
@@ -7,6 +7,7 @@ import { FaRegHeart } from 'react-icons/fa6'
 import { LuLeaf } from 'react-icons/lu'
 import Settings from '../../components/setttings/settings'
 const Profile = () => {
+    const navigate = useNavigate()
     const { id } = useParams()
     const { currUser, profileInfo } = useContext(AppContext)
     const splitName = currUser.name?.split(" ")
@@ -76,8 +77,9 @@ const Profile = () => {
                 </div>
             </div>
             <Settings />
-            <div className="logout-box">
-                <button onClick={logoutHandler} style={{padding:"20px 80px", background:"linear-gradient(120deg, red, orange)"}} >Log out</button>
+            <div className="profile-actions">
+                <button onClick={logoutHandler} style={{ background:"linear-gradient(120deg, red, orange)"}} >Log out</button>
+                <button onClick={()=>navigate("/change-password")}>{currUser?.password?"Change password":"Create Password"}</button>
             </div>
             
         </div>

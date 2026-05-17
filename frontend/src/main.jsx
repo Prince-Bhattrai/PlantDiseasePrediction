@@ -4,12 +4,15 @@ import './index.css'
 import App from './App.jsx'
 import { AppProvider } from './context/AppContext.jsx'
 import { BrowserRouter } from "react-router-dom"
+import { GoogleOAuthProvider } from '@react-oauth/google'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <AppProvider>
-        <App />
-      </AppProvider>
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID} >
+        <AppProvider>
+          <App />
+        </AppProvider>
+      </GoogleOAuthProvider>
     </BrowserRouter>
   </StrictMode>,
 )

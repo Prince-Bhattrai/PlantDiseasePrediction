@@ -11,8 +11,9 @@ import { ToastContainer } from "react-toastify"
 import Notfound from './components/notfound/notfound'
 import Profile from './pages/profile/profile'
 import Footer from './components/footer/footer'
+import SetPassword from './components/setPassword/setPassword'
 const App = () => {
-  const { token } = useContext(AppContext)
+  const { token, currUser } = useContext(AppContext)
   return (
     <>
       <Navbar />
@@ -26,9 +27,11 @@ const App = () => {
             <Route path="/history" element={<History />} />
             <Route path="/prediction" element={<Prediction />} />
             <Route path="/prediction/:id" element={<HistoryDetails />} />
-            <Route path = "/profile/:id" element={<Profile />} />
+            <Route path="/profile/:id" element={<Profile />} />
+            <Route path="change-password" element={<SetPassword />} />
           </>
         )}
+        
       </Routes>
       <Footer />
     </>
