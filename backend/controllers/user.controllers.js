@@ -150,64 +150,43 @@ export const getCurrUser = async (req, res) => {
     }
 }
 
-
 export const userSetting = async (req, res) => {
-
-    const { id } = req.user
-
-    const { name, email, address } = req.body
-
+    const { id } = req.user;
+    const { name, email, address } = req.body;
     try {
-
-        const user = await User.findById(id)
-
+        const user = await User.findById(id);
         if (!user) {
-            return res.status(400).json({
+            return res.status(404).json({
                 success: false,
                 message: "User not found!"
-            })
+            });
         }
+        if (email && email !== user.email) {
 
-        const isUniqueEmail = await User.findOne({ email })
+            const existingUser = await User.findOne({ email });
 
-        if (
-            isUniqueEmail &&
-            isUniqueEmail._id.toString() !== id
-        ) {
-            return res.status(400).json({
-                success: false,
-                message: "Try different email!"
-            })
+            if (existingUser) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Email already exists!"
+                });
+            }
         }
-
-        if (user._id.toString() !== id) {
-            return res.status(401).json({
-                success: false,
-                message: "Unauthorized!"
-            })
-        }
-
-        if (name) user.name = name
-
-        if (email) user.email = email
-
-        if (address) user.address = address
-
-        await user.save()
+        if (name) user.name = name;
+        if (email) user.email = email;
+        if (address) user.address = address;
+        await user.save();
 
         return res.status(200).json({
             success: true,
-            message: "User updated",
+            message: "User updated successfully",
             user
-        })
-
+        });
     } catch (error) {
-
-        console.log(error)
-
+        console.log(error);
         return res.status(500).json({
             success: false,
             message: "Server error please try again later!"
-        })
+        });
     }
-}
+};
