@@ -48,7 +48,7 @@ export const AppProvider = ({ children }) => {
             console.log(error)
         }
         try {
-            const modelRes = await axios.post("https://botani-scan-model.onrender.com")
+            const modelRes = await axios.get("https://botani-scan-model.onrender.com")
             console.log("Model res ", modelRes.data)
         } catch (error) {
             console.log(error)
