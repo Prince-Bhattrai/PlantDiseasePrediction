@@ -14,9 +14,11 @@ export const AppProvider = ({ children }) => {
         if (!token) return;
         getUserData(token)
         setToken(token)
+        
     }, [])
 
     const getUserData = async (token) => {
+        
         const config = {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -42,6 +44,12 @@ export const AppProvider = ({ children }) => {
             console.log(profileInfoRes.data)
             setProfileInfo(profileInfoRes.data.profileInfo)
 
+        } catch (error) {
+            console.log(error)
+        }
+        try {
+            const modelRes = await axios.post("https://botani-scan-model.com")
+            console.log("Model res ", modelRes.data)
         } catch (error) {
             console.log(error)
         }
