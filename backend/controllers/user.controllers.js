@@ -190,3 +190,138 @@ export const userSetting = async (req, res) => {
         });
     }
 };
+
+
+export const googleAuth = async (req, res) => {
+    const { name, email } = req.body;
+
+    if (!name || !email) {
+        return res.status(400).json({
+            success: false,
+            message: "Please provide required input"
+        });
+    }
+
+    try {
+
+        let user = await User.findOne({ email });
+
+        if (user) {
+
+            const token = jwt.sign(
+                { id: user._id },
+                process.env.JWT_SECRET,
+                { expiresIn: "7d" }
+            );
+
+            return res.status(200).json({
+                success: true,
+                message: "User logged in",
+                token
+            });
+        }
+
+        user = await User.create({
+            name,
+            email
+        });
+
+        const token = jwt.sign(
+            { id: user._id },
+            process.env.JWT_SECRET,
+            { expiresIn: "7d" }
+        );
+
+        return res.status(201).json({
+            success: true,
+            message: "User created",
+            token
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Server error please try again later!"
+        });
+    }
+};
+
+export const changePassword = async (req, res) => {
+    const { id } = req.user;
+    const { newPassword, oldPassword } = req.body;
+
+    if (!newPassword) {
+        return res.status(400).json({
+            success: false,
+            message: "New password required!"
+        });
+    }
+
+    try {
+
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: "Unauthorized"
+            });
+        }
+        if (!user.password) {
+
+            const salt = await bcrypt.genSalt(12);
+
+            const hash = await bcrypt.hash(
+                newPassword,
+                salt
+            );
+
+            user.password = hash;
+
+            await user.save();
+
+            return res.status(200).json({
+                success: true,
+                message: "Password set!"
+            });
+        }
+        if (!oldPassword) {
+            return res.status(400).json({
+                success: false,
+                message: "Old password required!"
+            });
+        }
+        const isValidPass = await bcrypt.compare(
+            oldPassword,
+            user.password
+        );
+        if (!isValidPass) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid password"
+            });
+        }
+
+        const salt = await bcrypt.genSalt(12);
+        const hash = await bcrypt.hash(
+            newPassword,
+            salt
+        );
+        user.password = hash;
+        await user.save();
+
+        return res.status(200).json({
+            success: true,
+            message: "Password updated!"
+        });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: "Server error please try again later!"
+        });
+    }
+};
