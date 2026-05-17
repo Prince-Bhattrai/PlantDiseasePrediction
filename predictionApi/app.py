@@ -7,7 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 hosts = [
     "http://localhost:4000",
-    "https://botani-scan.onrender.com"
+    "https://botani-scan.onrender.com",
+    "https://botani-scan.vercel.app"
 ]
 
 app = FastAPI()
