@@ -6,9 +6,9 @@ BotaniScan is a full-stack AI-based web application designed to detect plant dis
 
 # Live Demo
 
-Frontend: Your Vercel URL  
-Backend API: Your Render URL  
-ML API: Your FastAPI Render URL  
+Frontend: [live url frontend](https://botani-scan.vercel.app/)  
+Backend API:[lve url bckend](https://botani-scan.onrender.com/)
+ML API: [live url model](https://botani-scan-model.onrender.com/)  
 
 ---
 
@@ -51,6 +51,8 @@ The deep learning model is trained using the PlantVillage dataset containing 35 
 - Axios
 - React Icons
 - CSS
+- React Router dom
+- Google oauth react
 
 ## Backend
 
@@ -59,7 +61,8 @@ The deep learning model is trained using the PlantVillage dataset containing 35 
 - JWT
 - bcrypt
 - Multer
-
+- Axios
+-
 ## Machine Learning
 
 - TensorFlow
@@ -107,7 +110,7 @@ PlantVillage Dataset
 
 ## Training Details
 
-The model was trained for 5 epochs due to computational limitations and achieved approximately 90% accuracy.
+The model was trained for 5 epochs due to computational limitations and achieved approximately 91% accuracy.
 
 Future improvements include:
 
@@ -165,11 +168,15 @@ BotaniScan/
 │   └── package.json
 │
 ├── backend/
-│   ├── routes/
+│   ├── cofig/
 │   ├── controllers/
 │   ├── middleware/
 │   ├── models/
-│   └── server.js
+│   ├── node_modules/
+│   |── routes/
+│   ├── server/
+│   └── app.js/    
+│ 
 │
 ├── ml-api/
 │   ├── model/
@@ -186,9 +193,9 @@ BotaniScan/
 ## Clone Repository
 
 ```bash
-git clone https://github.com/your-username/BotaniScan.git
+git clone https://github.com/Prince-Bhattrai/PlantDiseasePrediction.git
 
-cd BotaniScan
+cd PlantDiseasePrediction
 ```
 
 ---
@@ -224,7 +231,7 @@ npm start
 Backend runs on:
 
 ```txt
-http://localhost:5000
+http://localhost:4000
 ```
 
 ---
